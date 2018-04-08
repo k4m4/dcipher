@@ -2,9 +2,12 @@
 
 > Decipher hashes using online rainbow table attack services.
 
+
 ## Install
 
-```~ ❯❯❯ npm install dcipher```
+```
+~ ❯❯❯ npm install dcipher
+```
 
 
 ## Usage
