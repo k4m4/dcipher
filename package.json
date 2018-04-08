@@ -1,0 +1,44 @@
+{
+  "name": "dcipher",
+  "version": "1.0.0",
+  "description": "Decipher hashes using online rainbow table attack services.",
+  "license": "MIT",
+  "repository": "k4m4/dcipher",
+  "author": {
+    "name": "Nikolaos Kamarinakis",
+    "url": "https://nikolaskama.me",
+    "email": "nikolaskam@gmail.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "keywords": [
+    "hash",
+    "decipher",
+    "crack",
+    "password",
+    "table",
+    "cracking",
+    "ctf"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "devDependencies": {
+    "ava": "*"
+  },
+  "dependencies": {
+    "arrify": "^1.0.1",
+    "cheerio": "^1.0.0-rc.2",
+    "hash-detector": "^1.1.0",
+    "p-any": "^1.1.0",
+    "p-timeout": "^2.0.1",
+    "pify": "^3.0.0",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
+  }
+}
