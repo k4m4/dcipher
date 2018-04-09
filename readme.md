@@ -1,6 +1,6 @@
 # dcipher [![Build Status](https://travis-ci.org/k4m4/dcipher.svg?branch=master)](https://travis-ci.org/k4m4/dcipher)
 
-> Decipher hashes using online rainbow table attack services.
+> Decipher hashes using online rainbow & lookup table attack services.
 
 
 ## Install

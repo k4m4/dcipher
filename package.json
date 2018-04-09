@@ -1,7 +1,7 @@
 {
   "name": "dcipher",
   "version": "1.0.0",
-  "description": "Decipher hashes using online rainbow table attack services.",
+  "description": "Decipher hashes using online rainbow & lookup table attack services.",
   "license": "MIT",
   "repository": "k4m4/dcipher",
   "author": {
@@ -21,6 +21,7 @@
     "decipher",
     "crack",
     "password",
+    "lookup",
     "table",
     "cracking",
     "ctf"
