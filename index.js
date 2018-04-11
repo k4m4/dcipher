@@ -13,6 +13,7 @@ const sha224     = ['https://md5hashing.net/hash/sha224/']
 const sha256     = ['https://hashtoolkit.com/decrypt-sha256-hash/?hash=','https://md5hashing.net/hash/sha256/']
 const sha384     = ['https://hashtoolkit.com/decrypt-sha384-hash/?hash=','https://md5hashing.net/hash/sha384/']
 const sha512     = ['https://hashtoolkit.com/decrypt-sha512-hash/?hash=','https://md5hashing.net/hash/sha256/']
+const ripemd320  = ['https://md5hashing.net/hash/ripemd320/']
 
 function retrieveHash (hash, type, uri) {
 	const options = {
@@ -29,7 +30,7 @@ function retrieveHash (hash, type, uri) {
 				if (uri == eval(type)[0]) plaintext = $('span[title="decrypted ' + type + ' hash"]').text();
 				else if (uri == eval(type)[1]) plaintext = $('em[class="long-content string"]').text();
 				else if (uri == eval(type)[2]) plaintext = $('span[id="decodedValue"]').text();
-			} else if (type == 'sha224') {
+			} else if (type == 'sha224' || type == 'ripemd320') {
 				if (uri == eval(type)[0]) plaintext = $('span[id="decodedValue"]').text();
 			} else if (type == 'sha256' || type == 'sha384' || type == 'sha512') {
 				if (uri == eval(type)[0]) plaintext = $('span[title="decrypted ' + type + ' hash"]').text();
@@ -55,7 +56,7 @@ async function dcipher (hash) {
 	return await hashDetect(hash).then(type => {
 		if (type != 'Hash type could not be detected') {
 			if (type == 'base64') return new Buffer(hash, 'base64').toString('utf8');
-			else if (type == 'md5' || type =='sha1' || type == 'sha224' || type == 'sha256' || type == 'sha384' || type == 'sha512') {
+			else if (type == 'md5' || type =='sha1' || type == 'sha224' || type == 'sha256' || type == 'sha384' || type == 'sha512' || type == 'ripemd320') {
 				var response = dcipherHash(hash, type);
 				return response;
 			}

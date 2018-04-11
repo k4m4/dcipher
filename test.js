@@ -49,3 +49,10 @@ test('sha512', async t => {
 test('sha512 with timeout', async t => {
 	t.is((await m('e233b19aabc7d5e53826fb734d1222f1f0444c3a3fc67ff4af370a66e7cadd2cb24009f1bc86f0bed12ca5fcb226145ad10fc5f650f6ef0959f8aadc5a594b27', {timeout: 8000})), 'unicorn');
 });
+
+test('ripemd320', async t => {
+	t.is((await m('f4971074a8da200c122c04bc4e0fa96066913d6f38d3397eb61a7341078cd4841386e159993826af')), 'unicorn');
+});
+test('ripemd320 with timeout', async t => {
+	t.is((await m('f4971074a8da200c122c04bc4e0fa96066913d6f38d3397eb61a7341078cd4841386e159993826af', {timeout: 8000})), 'unicorn');
+});
