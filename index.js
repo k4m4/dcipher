@@ -12,7 +12,7 @@ const sha1       = ['https://hashtoolkit.com/decrypt-sha1-hash/?hash=','https://
 const sha224     = ['https://md5hashing.net/hash/sha224/']
 const sha256     = ['https://hashtoolkit.com/decrypt-sha256-hash/?hash=','https://md5hashing.net/hash/sha256/']
 const sha384     = ['https://hashtoolkit.com/decrypt-sha384-hash/?hash=','https://md5hashing.net/hash/sha384/']
-const sha512     = ['https://hashtoolkit.com/decrypt-sha512-hash/?hash=','https://md5hashing.net/hash/sha256/']
+const sha512     = ['https://hashtoolkit.com/decrypt-sha512-hash/?hash=','https://md5hashing.net/hash/sha512/']
 const ripemd320  = ['https://md5hashing.net/hash/ripemd320/']
 
 function retrieveHash (hash, type, uri) {
