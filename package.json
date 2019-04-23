@@ -30,7 +30,7 @@
     "index.js"
   ],
   "devDependencies": {
-    "ava": "*"
+    "ava": "^1.4.1"
   },
   "dependencies": {
     "arrify": "^1.0.1",
