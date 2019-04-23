@@ -57,7 +57,7 @@ async function dcipherHash (hash, type) {
 async function dcipher (hash) {
 	return await hashDetect(hash).then(type => {
 		if (type != 'Hash type could not be detected') {
-			if (type == 'base64') return new Buffer(hash, 'base64').toString('utf8');
+			if (type == 'base64') return Buffer.from(hash, 'base64').toString('utf8');
 			else if (type == 'md5' || type =='sha1' || type == 'sha224' || type == 'sha256' || type == 'sha384' || type == 'sha512' || type == 'ripemd320') {
 				var response = dcipherHash(hash, type);
 				return response;

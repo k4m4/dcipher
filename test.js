@@ -2,10 +2,10 @@ import test from 'ava';
 import m from './';
 
 test('base64', async t => {
-	t.is((await m('dW5pY29ybg==')), new Buffer('dW5pY29ybg==', 'base64').toString('utf8'));
+	t.is((await m('dW5pY29ybg==')), Buffer.from('dW5pY29ybg==', 'base64').toString('utf8'));
 });
 test('base64 with timeout', async t => {
-	t.is((await m('dW5pY29ybg==', {timeout: 8000})), new Buffer('dW5pY29ybg==', 'base64').toString('utf8'));
+	t.is((await m('dW5pY29ybg==', {timeout: 8000})), Buffer.from('dW5pY29ybg==', 'base64').toString('utf8'));
 });
 
 test('md5', async t => {
