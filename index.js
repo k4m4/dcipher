@@ -7,13 +7,15 @@ const rp         = require('request-promise');
 const cheerio    = require('cheerio');
 const hashDetect = require('hash-detector');
 
-const md5        = ['https://hashtoolkit.com/decrypt-md5-hash/?hash=','https://md5.gromweb.com/?md5=','https://md5hashing.net/hash/md5/']
-const sha1       = ['https://hashtoolkit.com/decrypt-sha1-hash/?hash=','https://sha1.gromweb.com/?hash=','https://md5hashing.net/hash/sha1/']
-const sha224     = ['https://md5hashing.net/hash/sha224/']
-const sha256     = ['https://hashtoolkit.com/decrypt-sha256-hash/?hash=','https://md5hashing.net/hash/sha256/']
-const sha384     = ['https://hashtoolkit.com/decrypt-sha384-hash/?hash=','https://md5hashing.net/hash/sha384/']
-const sha512     = ['https://hashtoolkit.com/decrypt-sha512-hash/?hash=','https://md5hashing.net/hash/sha512/']
-const ripemd320  = ['https://md5hashing.net/hash/ripemd320/']
+const services = {
+	'md5': ['https://hashtoolkit.com/decrypt-md5-hash/?hash=','https://md5.gromweb.com/?md5=','https://md5hashing.net/hash/md5/'],
+	'sha1': ['https://hashtoolkit.com/decrypt-sha1-hash/?hash=','https://sha1.gromweb.com/?hash=','https://md5hashing.net/hash/sha1/'],
+	'sha224': ['https://md5hashing.net/hash/sha224/'],
+	'sha256': ['https://hashtoolkit.com/decrypt-sha256-hash/?hash=','https://md5hashing.net/hash/sha256/'],
+	'sha384': ['https://hashtoolkit.com/decrypt-sha384-hash/?hash=','https://md5hashing.net/hash/sha384/'],
+	'sha512': ['https://hashtoolkit.com/decrypt-sha512-hash/?hash=','https://md5hashing.net/hash/sha512/'],
+	'ripemd320': ['https://md5hashing.net/hash/ripemd320/']
+}
 
 function retrieveHash (hash, type, uri) {
 	const options = {
@@ -27,14 +29,14 @@ function retrieveHash (hash, type, uri) {
 			var $ = cheerio.load(htmlString);
 			let plaintext = '';
 			if (type == 'md5' || type == 'sha1') {
-				if (uri == eval(type)[0]) plaintext = $('span[title="decrypted ' + type + ' hash"]').text();
-				else if (uri == eval(type)[1]) plaintext = $('em[class="long-content string"]').text();
-				else if (uri == eval(type)[2]) plaintext = $('span[id="decodedValue"]').text();
+				if (uri == services[type][0]) plaintext = $('span[title="decrypted ' + type + ' hash"]').text();
+				else if (uri == services[type][1]) plaintext = $('em[class="long-content string"]').text();
+				else if (uri == services[type][2]) plaintext = $('span[id="decodedValue"]').text();
 			} else if (type == 'sha224' || type == 'ripemd320') {
-				if (uri == eval(type)[0]) plaintext = $('span[id="decodedValue"]').text();
+				if (uri == services[type][0]) plaintext = $('span[id="decodedValue"]').text();
 			} else if (type == 'sha256' || type == 'sha384' || type == 'sha512') {
-				if (uri == eval(type)[0]) plaintext = $('span[title="decrypted ' + type + ' hash"]').text();
-				else if (uri == eval(type)[1]) plaintext = $('span[id="decodedValue"]').text();
+				if (uri == services[type][0]) plaintext = $('span[title="decrypted ' + type + ' hash"]').text();
+				else if (uri == services[type][1]) plaintext = $('span[id="decodedValue"]').text();
 			}
 			return plaintext;
 		})
@@ -42,7 +44,7 @@ function retrieveHash (hash, type, uri) {
 }
 
 async function dcipherHash (hash, type) {
-	for (const uri of eval(type)) {
+	for (const uri of services[type]) {
 		var temp = await retrieveHash(hash, type, uri);
 		if (temp !== undefined && temp !== '') {
 			return temp;
