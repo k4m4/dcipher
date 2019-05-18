@@ -67,7 +67,7 @@ Timeout in milliseconds after which a request is considered failed. Default: `50
 
 ## Supported Encodings
 
-- [`Base64`](https://github.com/kevva/base64-regex
+- [`Base64`](https://github.com/kevva/base64-regex)
 
 
 ## Credits
